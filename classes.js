@@ -13,25 +13,30 @@ class Pokemon {
 
 class Pikachu extends Pokemon {
     constructor() {
-        super("Pikachu", "eletric", 100, 50);
+        super("Pikachu", "eletric", 100, 60);
+
     }
 }
 
 class Charmander extends Pokemon {
     constructor() {
-        super("Charmander", "fire", 100, 50);
+
+        super("Charmander", "fire", 100, 60);
     }
 }
 
 class Squirtle extends Pokemon {
     constructor() {
-        super("Squirtle", "water", 100, 50);
+
+        super("Squirtle", "water", 100, 60);
+
     }
 }
 
 class Bulbasaur extends Pokemon {
     constructor() {
-        super("Bulbasaur", "grass", 100, 50);
+        super("Bulbasaur", "grass", 100, 60);
+
     }
 }
 
