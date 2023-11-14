@@ -2,6 +2,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 
 
+<<<<<<< HEAD
 console.log(chalk.bgRed.bold("Welcome to Pokemon Escape Room"));
 
 async function initiatePokemonSelection() {
@@ -114,3 +115,7 @@ initiatePokemonSelection()
 
 
 export default initiatePokemonSelection;
+=======
+console.log("Welcome to Pokemon Escape Room");
+
+>>>>>>> b0afa3e6edd9978055d0d3e48a86768d678278a3
