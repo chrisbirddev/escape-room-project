@@ -35,3 +35,15 @@ export class Charmander extends Pokemon {
     }
 }
 
+class WildPokemon extends Pokemon {
+    constructor() {
+        super("Mew", "psychic", 100, 60);
+    }
+}
+
+const jynx = new WildPokemon("Jynx", "psychic", 100, 60);
+const alakazam = new WildPokemon("Alakazam", "psychic", 100, 60);
+const hypno = new WildPokemon("Hypno", "psychic", 100, 60);
+
+module.export = {Pokemon, Pikachu, Bulbasaur, Squirtle, Charmander, WildPokemon};
+
