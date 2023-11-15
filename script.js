@@ -1,12 +1,13 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
+import * as PokemonModule from './classes.js';
+
+const { Pokemon, Pikachu, Bulbasaur, Squirtle, Charmander } = PokemonModule;
 
 
-<<<<<<< HEAD
 console.log(chalk.bgRed.bold("Welcome to Pokemon Escape Room"));
 
 async function initiatePokemonSelection() {
-    try {
       const usernameAnswer = await inquirer.prompt([
         {
           type: 'input',
@@ -18,11 +19,7 @@ async function initiatePokemonSelection() {
       const username = usernameAnswer.username;
   
       const chosenPokemon = await chooseYourPokemon();
-  
-    } catch (error) {
-        console.error('Error:', error);
     }
-}
 
 async function chooseYourPokemon() {
     const pokemons = await inquirer.prompt([
@@ -30,92 +27,85 @@ async function chooseYourPokemon() {
             type: "list",
             name: "pokemon",
             message: "choose your pokemon:",
-            choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+            choices: ["Pikachu", "Charmander", "Squirtle", "Bulbasaur"],
         },
         {
         type: "confirm",
         name: "confirm2",
-        message: "Are you sure?",
+        message: (answers) => {
+            const chosenPokemon = createPokemonInstance(answers);
+            displayPokemonInfo(chosenPokemon);
+            return `Are you sure you want to choose ${chosenPokemon.name}?`;
+        },
     }
-    ])
+]);
     if (pokemons.confirm2) {
-        console.log(`You chose ${pokemons.pokemon}`)
+        await whereDoYouWannaGo();
     } else {
         console.log('lets go back')
         return chooseYourPokemon();
     }
 }
 
+function createPokemonInstance(chosenPokemon) {
+    switch (chosenPokemon.pokemon) {
+        case 'Pikachu':
+            return new Pikachu();
+        case 'Charmander':
+            return new Charmander();
+        case 'Squirtle':
+            return new Squirtle();
+        case 'Bulbasaur':
+            return new Bulbasaur();
+    }
+}
+
+function displayPokemonInfo(pokemon) {
+    console.log(`${pokemon.name} | Type: ${pokemon.type} | Health: ${pokemon.health} | Power: ??`);
+}
+
+async function whereDoYouWannaGo() {
+    const location = await inquirer.prompt([
+        {
+            type: "list",
+            name: "location",
+            message: "Where do you want to go?:",
+            choices: ["Kanto", "Johto", "Hoeen", "Sinnoh"],
+        },
+        {
+            type: "confirm",
+            name: "confirm3",
+            message: "are you sure?",
+        }
+    ])
+
+    if (location.confirm3) {
+        console.log(`you chose ${location.location}`);
+        await wildPokemonEncounter();
+    } else {
+        console.log("Where do you wanna go?")
+        return whereDoYouWannaGo()
+    }
+}
+
+async function wildPokemonEncounter() {
+        const encounterOptions = await inquirer.prompt({
+            type: 'list',
+            name: 'choice',
+            message: 'Wild Pokemon encountered! What will you do?',
+            choices: ['Run', 'Battle'],
+        });
+
+        if (encounterOptions.choice === 'Run') {
+            console.log('You chose to run. You lose some health points.'); 
+        } else if (encounterOptions.choice === 'Battle') {
+            console.log(`You chose to battle. Let the battle begin!`); 
+        }
+    } 
+    
+
 initiatePokemonSelection()
 
 
 
-
-
-
-
-
-
-
-
-/* async function whereDoYouWannaGo() {
-    const location = await inquirer.prompt({
-        type: "list",
-        name: "location",
-        choices: ["Kanto", "Johto", "Hoenn", "Sinnoh"],
-}, 
-{
-    type: "confirm",
-    name: "confirm3",
-    message: "Are you sure?"
-})
-} */
-
-
-
-
-
-/* inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'username',
-      message: "What's your username:",
-    },
-  ])
-  .then(async (answers) => {
-    const userName = answers.username;
-    console.log(`Hello, ${userName} welcome`);
-
-  return inquirer.prompt([
-    {
-    type: 'list',
-    name: 'choosenPokemon',
-    message: 'Choose your Pokemon',
-    choices: ['Pikachu', 'Charmander', 'Squirtle', 'Bulbasaur'],
-    },
-    {
-        type: 'confirm',
-        name: 'confirm',
-        message: 'Are you sure?',
-    },
-    {
-        type:`list`,
-        name:"Paths",
-        message: "Where do you wanna go next?",
-        choices: ["Kanto", "Johto", "Hoenn", "Sinnoh"],
-    },
-    {
-        type: 'confirm',
-        name: 'confirm1',
-        message: 'Are you sure?',
-    },
-]);
-  */
-
-
 export default initiatePokemonSelection;
-=======
-console.log("Welcome to Pokemon Escape Room");
-
->>>>>>> b0afa3e6edd9978055d0d3e48a86768d678278a3

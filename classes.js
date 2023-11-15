@@ -1,4 +1,4 @@
-class Pokemon {
+export class Pokemon {
     constructor(name, type, health, power) {
         this.name = name;
         this.type = type;
@@ -11,33 +11,27 @@ class Pokemon {
     }
 }
 
-class Pikachu extends Pokemon {
+export class Pikachu extends Pokemon {
     constructor() {
-        super("Pikachu", "eletric", 100, 60);
-
+        super("Pikachu", "electric", 100, 60);
     }
 }
 
-class Charmander extends Pokemon {
+export class Bulbasaur extends Pokemon {
     constructor() {
+        super("Bulbasaur", "grass", 100, 60);
+    }
+}
 
+export class Squirtle extends Pokemon {
+    constructor() {
+        super("Squirtle", "water", 100, 60);
+    }
+}
+
+export class Charmander extends Pokemon {
+    constructor() {
         super("Charmander", "fire", 100, 60);
     }
 }
 
-class Squirtle extends Pokemon {
-    constructor() {
-
-        super("Squirtle", "water", 100, 60);
-
-    }
-}
-
-class Bulbasaur extends Pokemon {
-    constructor() {
-        super("Bulbasaur", "grass", 100, 60);
-
-    }
-}
-
-module.export = {Pokemon, Pikachu, Bulbasaur, Squirtle, Charmander};
