@@ -1,4 +1,4 @@
-export class Pokemon {
+ class Pokemon {
     constructor(name, type, health, power) {
         this.name = name;
         this.type = type;
@@ -11,39 +11,40 @@ export class Pokemon {
     }
 }
 
-export class Pikachu extends Pokemon {
+ class Pikachu extends Pokemon {
     constructor() {
         super("Pikachu", "electric", 100, 60);
     }
 }
 
-export class Bulbasaur extends Pokemon {
+ class Bulbasaur extends Pokemon {
     constructor() {
         super("Bulbasaur", "grass", 100, 60);
     }
 }
 
-export class Squirtle extends Pokemon {
+ class Squirtle extends Pokemon {
     constructor() {
         super("Squirtle", "water", 100, 60);
     }
 }
 
-export class Charmander extends Pokemon {
+ class Charmander extends Pokemon {
     constructor() {
         super("Charmander", "fire", 100, 60);
     }
 }
 
 class WildPokemon extends Pokemon {
-    constructor() {
-        super("Mew", "psychic", 100, 60);
+    constructor(name, type, health, power) {
+        super(name, type, health, power);
     }
 }
 
-const jynx = new WildPokemon("Jynx", "psychic", 100, 60);
-const alakazam = new WildPokemon("Alakazam", "psychic", 100, 60);
-const hypno = new WildPokemon("Hypno", "psychic", 100, 60);
+const Wildmew = new WildPokemon("Mew", "psychic", 100, 20)
+const Wildjynx = new WildPokemon("Jynx", "psychic", 100, 40);
+const Wildalakazam = new WildPokemon("Alakazam", "psychic", 100, 80);
+const Wildhypno = new WildPokemon("Hypno", "psychic", 100, 99);
 
-module.export = {Pokemon, Pikachu, Bulbasaur, Squirtle, Charmander, WildPokemon};
+export {Pokemon, Pikachu, Bulbasaur, Squirtle, Charmander, WildPokemon, Wildmew, Wildjynx, Wildalakazam, Wildhypno};
 
